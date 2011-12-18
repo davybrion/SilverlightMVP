@@ -1,0 +1,28 @@
+﻿<MVP:View x:Class="SilverlightMVP.Client.Views.UserGroups"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        xmlns:Controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls" 
+        xmlns:Windows="clr-namespace:System.Windows;assembly=System.Windows.Controls" 
+        xmlns:MVP="clr-namespace:SilverlightMVP.Client.Infrastructure.MVP">
+
+    <Grid Background="White">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        <Controls:TreeView x:Name="UserGroupsTreeView" ItemsSource="{Binding UserGroups}" 
+                           SelectedItemChanged="UserGroupsTreeView_SelectedItemChanged" Grid.Row="0" >
+            <Controls:TreeView.ItemTemplate>
+                <Windows:HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                    <TextBlock Text="{Binding Path=Name}" />
+                </Windows:HierarchicalDataTemplate>
+            </Controls:TreeView.ItemTemplate>
+        </Controls:TreeView>
+        
+        <Button x:Name="AddNewButton" Content="Create new usergroup" Click="AddNewButton_Click" 
+                Margin="5" Grid.Row="1" />
+
+    </Grid>
+</MVP:View>

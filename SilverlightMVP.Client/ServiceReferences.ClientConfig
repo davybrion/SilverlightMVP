@@ -1,0 +1,17 @@
+﻿<configuration>
+  <system.serviceModel>
+    <bindings>
+      <basicHttpBinding>
+        <binding name="agathaServiceBinding" maxBufferSize="2147483647" maxReceivedMessageSize="2147483647"
+						 receiveTimeout="00:30:00" sendTimeout="00:30:00">
+          <security mode="None" />
+        </binding>
+      </basicHttpBinding>
+    </bindings>
+    <client>
+      <endpoint binding="basicHttpBinding" bindingConfiguration="agathaServiceBinding"
+							contract="Agatha.Common.WCF.IWcfRequestProcessor"
+							name="agathaService" address="http://localhost:1459/Service.svc" />
+    </client>
+  </system.serviceModel>
+</configuration>
